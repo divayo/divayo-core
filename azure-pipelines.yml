@@ -20,7 +20,7 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 
-task: NuGetCommand@2
+-task: NuGetCommand@2
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
