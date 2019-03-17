@@ -19,11 +19,11 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- task: NuGetCommand@2
-  inputs:
-    command: pack
-    versioningScheme: byPrereleaseNumber
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
-    MsbuildPath: '/usr/lib/mono/msbuild/15.0/bin'
+#- task: NuGetCommand@2
+#  inputs:
+#    command: pack
+#    versioningScheme: byPrereleaseNumber
+#    majorVersion: '$(Major)'
+#    minorVersion: '$(Minor)'
+#    patchVersion: '$(Patch)'
+#    MsbuildPath: '/usr/lib/mono/msbuild/15.0/bin'
