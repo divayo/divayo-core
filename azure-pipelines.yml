@@ -26,3 +26,4 @@ steps:
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
+    MsbuildPath: '/usr/lib/mono/msbuild/15.0/bin'
