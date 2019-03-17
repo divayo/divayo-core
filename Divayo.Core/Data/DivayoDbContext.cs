@@ -46,6 +46,22 @@ namespace Divayo.Core.Data
             return base.SaveChangesAsync(cancellationToken);
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            foreach (var p in builder.Model
+                                .GetEntityTypes()
+                                .SelectMany(t => t.GetProperties())
+                                .Where(p =>
+                                    p.Name == "Id" &&
+                                    p.ClrType == typeof(Guid)))
+            {
+                p.SqlServer().DefaultValueSql = "NEWID()";
+            }
+            
+
+            base.OnModelCreating(builder);
+        }
+
         protected virtual void SetMetaData()
         {
             var httpContextAccessor = _serviceProvider.GetRequiredService<IHttpContextAccessor>();
