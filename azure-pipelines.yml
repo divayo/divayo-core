@@ -19,6 +19,13 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
+  displayName: 'Create nuget package'
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
+- task: DotNetCoreCLI@2
+  displayName: 'Push package to feed'
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    publishVstsFeed: 'Divayo-Core'
